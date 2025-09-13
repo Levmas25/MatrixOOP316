@@ -1,7 +1,17 @@
+#pragma once 
+#include<string>
 
-
-class Symbol{
+class MySymbol{
+    private:
+        static std::string charset;
+        int _x;
+        int _y;
     public:
-        void PutSymbol(int x, int y);
-        void DeleteSymbol(int x, int y);
+        char c;
+        void PutSymbol();
+        void DeleteSymbol();
+        void SetPosition(int new_x, int new_y);
+        int* GetPosition();
+        void MoveForward(int next_row);
+        MySymbol(int x, int y);
 };

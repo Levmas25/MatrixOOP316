@@ -1,6 +1,7 @@
 class ConsoleManager{
     public:
-        void GotoXY(int col, int row);
-        void ClearScreen();
-        void SetColor(int foreground);
+        static void GotoXY(int col, int row);
+        static void ClearScreen();
+        static void SetColor(int foreground);
+        static int* GetConsoleSize();
 };
