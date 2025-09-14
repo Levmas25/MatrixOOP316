@@ -11,27 +11,24 @@ int main(int argc, char* argv[]){
     if (argc == 3)
         AppManager manager = AppManager(argv[1], argv[2], argv[3]);
 
-    ConsoleManager console_manager = ConsoleManager();
-    console_manager.ClearScreen(); 
-    console_manager.SetColor(BRIGHT_CYAN);
     RandomEngine::Init();
 
     std::cout << std::unitbuf;
     
-    int length;
-    int row;
+    char* length = new char[2];
+    char* epilepsy = new char[1];
+    char* speed = new char[2];
 
     std::cin >> length;
-    std::cin >> row;
+    std::cin >> epilepsy;
+    std::cin >> speed;
 
-    Line line = Line(length, row);
-    line.CrawlOut();
-    line.MoveToTheEnd();
-    line.CrawlIn();
+    AppManager man = AppManager(speed, length, epilepsy);
+    man.SetUp();
 
     std::cout << '\n';
     getchar();
-    console_manager.SetColor(WHITE);
+    ConsoleManager::SetColor(WHITE);
 
     return 0;
 }

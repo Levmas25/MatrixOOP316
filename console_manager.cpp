@@ -17,6 +17,11 @@ void ConsoleManager::SetColor(int foreground=WHITE){
     std::cout << "\033[0;" << foreground << 'm';
 }
 
+void ConsoleManager::DestroySymbol(int x, int y){
+    GotoXY(x, y);
+    std::cout << ' ';
+}
+
 int* ConsoleManager::GetConsoleSize(){
     struct winsize w;
     // ioctl send systemcall with standart output descriptor STDOUT_FILENO

@@ -6,55 +6,72 @@
 #include<unistd.h>
 
 
-void Line::CrawlOut(){
+void Line::_CrawlOut(){
     int* console_size = ConsoleManager::GetConsoleSize();
     int cols = console_size[1];
 
     int baseCol = cols;
 
     int curLength = 0;
-
-    while (curLength < _length)
-    {
-        ShiftLeft(0, curLength, 1);
-        _symbols.push_back(MySymbol(baseCol, _row));
-        curLength++;
-    }
+    
+    MySymbol head = MySymbol(baseCol, _row);
+    _headPosition = head.GetPosition();
+    _ShiftLeft(1, _length);
 }
 
-void Line::ShiftLeft(int initialPosition, int curLength, int numberOfShifts){
+void Line::_ShiftLeft(int curLength, int numberOfShifts){
     for (int shiftNumber = 0; shiftNumber < numberOfShifts; shiftNumber++){
-        for (int i = initialPosition; i < curLength; i++){
-            MySymbol& curSymb = _symbols[i];
-            if (curSymb.GetRow() == _row)
-            _nextLine = 1;
-            else
-            _nextLine = -1;
-            curSymb.MoveForward(_nextLine);
+
+        if (_headPosition[1] == _row) _nextLine = 1;
+        else _nextLine = -1;
+
+        MySymbol new_head = MySymbol(_headPosition[0] - 1, _headPosition[1] + _nextLine);
+        _headPosition = new_head.GetPosition();
+
+        usleep(1000000 / _speed);
+
+        if (curLength == _length)
+            _DeleteFromTail(1);
+        else{
+            _tailPosition = ConsoleManager::GetConsoleSize();
+            _tailPosition[0] = _row;
         }
-        usleep(100000);
+            
     }
 }
 
-void Line::MoveToTheEnd(){
-    int numberOfShifts = _symbols[0].GetCol() - 1;
-    ShiftLeft(0, _length, numberOfShifts);
-}
-
-void Line::CrawlIn(){
-    int initialPosition = 0;
-
-    while (initialPosition < _length){
-        MySymbol& head = _symbols[initialPosition];
-        head.DeleteSymbol();
-        initialPosition++;
-        ShiftLeft(initialPosition, _length, 1);
+void Line::_DeleteFromTail(int times){
+    for (int i = 0; i < times; i++){
+        ConsoleManager::DestroySymbol(_tailPosition[1], _tailPosition[0]);
+            if (_tailPosition[0] != _row)
+                _tailPosition[0] = _row;
+            else
+                _tailPosition[0] = _row + 1;
+        
+        _tailPosition[1] -= 1;
+        usleep(1000000 / _speed);
+        
     }
 }
 
+void Line::_MoveToTheEnd(){
+    int numberOfShifts = _headPosition[0] - 1;
+    _ShiftLeft(_length, numberOfShifts);
+}
 
-Line::Line(int length, int row){
+void Line::_CrawlIn(){
+    _DeleteFromTail(_length);
+}
+
+void Line::Move(){
+    _CrawlOut();
+    _MoveToTheEnd();
+    _CrawlIn();
+}
+
+Line::Line(int length, int row, int speed){
     _length = length;
     _row = row;
+    _speed = speed;
     _nextLine = 0;
 }

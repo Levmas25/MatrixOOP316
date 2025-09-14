@@ -4,4 +4,5 @@ class ConsoleManager{
         static void ClearScreen();
         static void SetColor(int foreground);
         static int* GetConsoleSize();
+        static void DestroySymbol(int x, int y);
 };

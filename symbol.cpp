@@ -39,6 +39,10 @@ int MySymbol::GetRow(){
     return _y;
 }
 
+int* MySymbol::GetPosition(){
+    return new int[2] {_x, _y};
+}
+
 MySymbol::MySymbol(int x, int y){
     _x = x;
     _y = y;
