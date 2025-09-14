@@ -5,7 +5,7 @@ class RandomEngine{
         static std::mt19937 gen;
     
     public:
-        void Init(){
+        static void Init(){
             // creates random device
             static std::random_device rd;
             gen.seed(rd());

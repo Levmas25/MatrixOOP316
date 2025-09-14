@@ -33,7 +33,7 @@ int* AppManager::ValidateInput(char* lineSpeed, char* lineLength, char* epilepsy
 }
 
 AppManager::AppManager(char* lineSpeed, char* lineLength, char* epilepsy){
-    int* validatedData = AppManager::ValidateInput(lineSpeed, lineLength, epilepsy);
+    int* validatedData = ValidateInput(lineSpeed, lineLength, epilepsy);
     this->lineSpeed = validatedData[0];
     this->lineLength = validatedData[1];
     this->epilepsy = validatedData[2];

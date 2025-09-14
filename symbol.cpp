@@ -7,35 +7,44 @@
 std::string MySymbol::charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
 void MySymbol::PutSymbol(){
-    ConsoleManager::GotoXY(this->_x, this->_y);
-    putchar(this->c);
+    ConsoleManager::GotoXY(_x, _y);
+    std::cout << _c;
 
 }
 
 void MySymbol::DeleteSymbol(){
-    ConsoleManager::GotoXY(this->_x, this->_y);
-    putchar(' ');
+    ConsoleManager::GotoXY(_x, _y);
+    std::cout << ' ';
 }
 
 void MySymbol::SetPosition(int new_x, int new_y){
-    this->_x = new_x;
-    this->_y = new_y; 
-    this->PutSymbol();
+    DeleteSymbol();
+    _x = new_x;
+    _y = new_y; 
+    PutSymbol();
 }
 
 void MySymbol::MoveForward(int next_row){
     DeleteSymbol();
-    this->_x--;
-    this->_y += next_row;
+    _x--;
+    _y += next_row;
     PutSymbol();
 }
 
+int MySymbol::GetCol(){
+    return _x;
+}
+
+int MySymbol::GetRow(){
+    return _y;
+}
+
 MySymbol::MySymbol(int x, int y){
-    this->_x = x;
-    this->_y = y;
+    _x = x;
+    _y = y;
 
     int pos = RandomEngine::randInt(0, MySymbol::charset.size() - 1);
-    this->c = MySymbol::charset[pos];
+    _c = MySymbol::charset[pos];
 
-    this->PutSymbol();
+    PutSymbol();
 }

@@ -8,30 +8,53 @@
 
 void Line::CrawlOut(){
     int* console_size = ConsoleManager::GetConsoleSize();
-    int rows = console_size[0];
     int cols = console_size[1];
 
-    int base_row = this->_row;
-    int base_col = cols - 1;
+    int baseCol = cols;
 
-    int cur_length = 0;
-    // indicatesn whether we need to put a symbol on the next line
-    // to create a zigzag
-    int next_line = 0;
-    while (cur_length < this->_length)
+    int curLength = 0;
+
+    while (curLength < _length)
     {
-        for (int i = 0; i < cur_length; i++){
-            this->_symbols[i].MoveForward(next_line);
-            next_line = (next_line + 1) % 2;
-            usleep(100000);
+        ShiftLeft(0, curLength, 1);
+        _symbols.push_back(MySymbol(baseCol, _row));
+        curLength++;
+    }
+}
+
+void Line::ShiftLeft(int initialPosition, int curLength, int numberOfShifts){
+    for (int shiftNumber = 0; shiftNumber < numberOfShifts; shiftNumber++){
+        for (int i = initialPosition; i < curLength; i++){
+            MySymbol& curSymb = _symbols[i];
+            if (curSymb.GetRow() == _row)
+            _nextLine = 1;
+            else
+            _nextLine = -1;
+            curSymb.MoveForward(_nextLine);
         }
-        this->_symbols.push_back(MySymbol(base_col, base_row));
-        cur_length++;
+        usleep(100000);
+    }
+}
+
+void Line::MoveToTheEnd(){
+    int numberOfShifts = _symbols[0].GetCol() - 1;
+    ShiftLeft(0, _length, numberOfShifts);
+}
+
+void Line::CrawlIn(){
+    int initialPosition = 0;
+
+    while (initialPosition < _length){
+        MySymbol& head = _symbols[initialPosition];
+        head.DeleteSymbol();
+        initialPosition++;
+        ShiftLeft(initialPosition, _length, 1);
     }
 }
 
 
 Line::Line(int length, int row){
-    this->_length = length;
-    this->_row = row;
+    _length = length;
+    _row = row;
+    _nextLine = 0;
 }
