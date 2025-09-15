@@ -11,13 +11,13 @@ class AppManager{
         int _lineLength;
         bool _epilepsy;
 
-        const std::string _invalidLineSpeedErrorMsg = "\nLine speed must be integer in range [1;30]\n";
-        const std::string _invalidLineLengthErrorMsg = "\nLine length must be integer in range [1;30]\n";
-        const std::string _invalidEpilepcyErrorMsg = "\nEpilepsy must be y or n\n";
+        static const std::string _invalidLineSpeedErrorMsg;
+        static const std::string _invalidLineLengthErrorMsg;
+        static const std::string _invalidEpilepcyErrorMsg;
 
-        const std::string _lineSpeedInputMsg = "Enter the line speed(integer in range 1-30): ";
-        const std::string _lineLengthInputMsg = "Enter the line legth(integer in range 1-30): ";
-        const std::string _epilepcyModeInputMsg = "Turn on epilepsy mode? [y\\N]: ";
+        static const std::string _lineSpeedInputMsg;
+        static const std::string _lineLengthInputMsg;
+        static const std::string _epilepcyModeInputMsg;
 
     public:
         AppManager();

@@ -16,9 +16,5 @@ int main(int argc, char* argv[]){
         
     manager.Run();
 
-    std::cout << '\n';
-    getchar();
-    ConsoleManager::SetColor(WHITE);
-
     return 0;
 }

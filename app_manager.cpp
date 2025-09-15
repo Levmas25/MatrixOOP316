@@ -3,11 +3,20 @@
 #include "colors.h"
 #include "random_engine.h"
 #include "line.h"
+
 #include<stdexcept>
 #include<cstdlib>
 #include <string> 
-
 #include<iostream>
+
+
+const std::string AppManager::_invalidLineSpeedErrorMsg = "\nLine speed must be integer in range [1;30]\n";
+const std::string AppManager::_invalidLineLengthErrorMsg = "\nLine length must be integer in range [1;30]\n";
+const std::string AppManager::_invalidEpilepcyErrorMsg = "\nEpilepsy must be y or n\n";
+
+const std::string AppManager::_lineSpeedInputMsg = "Enter the line speed(integer in range 1-30): ";
+const std::string AppManager::_lineLengthInputMsg = "Enter the line legth(integer in range 1-30): ";
+const std::string AppManager::_epilepcyModeInputMsg = "Turn on epilepsy mode? [y\\N]: ";
 
 
 int* AppManager::ValidateInput(std::string lineSpeed, std::string lineLength, std::string epilepsy){
