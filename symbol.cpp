@@ -8,8 +8,7 @@ std::string MySymbol::charset = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstu
 
 void MySymbol::PutSymbol(){
     ConsoleManager::GotoXY(_x, _y);
-    std::cout << _c;
-
+    std::cout << "\033[" << _color << 'm' << _c << "\033[m";
 }
 
 void MySymbol::DeleteSymbol(){
@@ -43,9 +42,10 @@ int* MySymbol::GetPosition(){
     return new int[2] {_x, _y};
 }
 
-MySymbol::MySymbol(int x, int y){
+MySymbol::MySymbol(int x, int y, int color){
     _x = x;
     _y = y;
+    _color = color;
 
     int pos = RandomEngine::randInt(0, MySymbol::charset.size() - 1);
     _c = MySymbol::charset[pos];

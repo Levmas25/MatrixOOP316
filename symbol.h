@@ -7,6 +7,7 @@ class MySymbol{
         int _x;
         int _y;
         char _c;
+        int _color;
     public:
         void PutSymbol();
         void DeleteSymbol();
@@ -15,5 +16,5 @@ class MySymbol{
         int GetRow();
         int GetCol();
         void MoveForward(int next_row);
-        MySymbol(int x, int y);
+        MySymbol(int x, int y, int color);
 };
