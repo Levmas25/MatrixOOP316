@@ -1,13 +1,13 @@
+#include<stdexcept>
+#include<cstdlib>
+#include <string> 
+#include<iostream>
+
 #include "app_manager.h"
 #include "console_manager.h"
 #include "colors.h"
 #include "random_engine.h"
 #include "line.h"
-
-#include<stdexcept>
-#include<cstdlib>
-#include <string> 
-#include<iostream>
 
 
 const std::string AppManager::_invalidLineSpeedErrorMsg = "\nLine speed must be integer in range [1;30]\n";

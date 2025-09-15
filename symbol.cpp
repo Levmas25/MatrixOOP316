@@ -23,21 +23,6 @@ void MySymbol::SetPosition(int new_x, int new_y){
     PutSymbol();
 }
 
-void MySymbol::MoveForward(int next_row){
-    DeleteSymbol();
-    _x--;
-    _y += next_row;
-    PutSymbol();
-}
-
-int MySymbol::GetCol(){
-    return _x;
-}
-
-int MySymbol::GetRow(){
-    return _y;
-}
-
 int* MySymbol::GetPosition(){
     return new int[2] {_x, _y};
 }

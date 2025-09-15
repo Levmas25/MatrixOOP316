@@ -5,8 +5,6 @@
 
 class AppManager{
     private:
-        int _consoleHeight;
-        int _consoleWidth;
         int _lineSpeed;
         int _lineLength;
         bool _epilepsy;

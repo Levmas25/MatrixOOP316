@@ -13,8 +13,5 @@ class MySymbol{
         void DeleteSymbol();
         void SetPosition(int new_x, int new_y);
         int* GetPosition();
-        int GetRow();
-        int GetCol();
-        void MoveForward(int next_row);
         MySymbol(int x, int y, int color);
 };
