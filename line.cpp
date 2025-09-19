@@ -9,6 +9,7 @@
 void Line::_CrawlOut(){
     int* console_size = ConsoleManager::GetConsoleSize();
     int cols = console_size[1];
+    delete[] console_size;
 
     int baseCol = cols;
 
@@ -64,9 +65,6 @@ void Line::_MoveToTheEnd(){
 
 void Line::_CrawlIn(){
     _DeleteFromTail(_length+1);
-
-    delete _headPosition;
-    delete _tailPosition;
 }
 
 void Line::Move(){

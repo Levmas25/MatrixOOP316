@@ -10,13 +10,17 @@
 #include "line.h"
 
 
-const std::string AppManager::_invalidLineSpeedErrorMsg = "\nLine speed must be integer in range [1;30]\n";
-const std::string AppManager::_invalidLineLengthErrorMsg = "\nLine length must be integer in range [1;30]\n";
-const std::string AppManager::_invalidEpilepcyErrorMsg = "\nEpilepsy must be y or n\n";
+const std::string AppManager::_invalidLineSpeedErrorMsg = "\nLine speed must be integer in range [1;30]\n\n";
+const std::string AppManager::_invalidLineLengthErrorMsg = "\nLine length must be integer in range [1;30]\n\n";
+const std::string AppManager::_invalidEpilepcyErrorMsg = "\nEpilepsy must be y or n\n\n";
 
 const std::string AppManager::_lineSpeedInputMsg = "Enter the line speed(integer in range 1-30): ";
 const std::string AppManager::_lineLengthInputMsg = "Enter the line legth(integer in range 1-30): ";
 const std::string AppManager::_epilepcyModeInputMsg = "Turn on epilepsy mode? [y\\N]: ";
+
+const char* AppManager::_helpMessage = "This is the console matrix program.\n"
+"To run the program you need to provie line speed(integer 1-30), line length(integer 1-30) "
+"and the epilepsy mode flag.\n"; 
 
 
 int* AppManager::ValidateInput(std::string lineSpeed, std::string lineLength, std::string epilepsy){
@@ -54,6 +58,8 @@ AppManager::AppManager(std::string lineSpeed, std::string lineLength, std::strin
         _lineSpeed = validatedData[0];
         _lineLength = validatedData[1];
         _epilepsy = validatedData[2];
+
+        delete[] validatedData;
     }
     catch (const std::invalid_argument& e){
         std::cout << e.what();
@@ -118,6 +124,10 @@ void AppManager::Run(){
     while (true){
         GenerateLine();
     }
+}
+
+void AppManager::DisplayHelpText(){
+    std::cout << _helpMessage;
 }
 
 

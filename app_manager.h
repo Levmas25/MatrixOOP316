@@ -2,6 +2,7 @@
 
 #include "line.h"
 #include <string>
+#include <vector>
 
 class AppManager{
     private:
@@ -17,11 +18,14 @@ class AppManager{
         static const std::string _lineLengthInputMsg;
         static const std::string _epilepcyModeInputMsg;
 
+        static const char* _helpMessage;
+
     public:
         AppManager();
         AppManager(std::string lineSpeed, std::string lineLength, std::string epilepcy);
         int* ValidateInput(std::string lineSpeed, std::string lineLength, std::string epilepsy);
         int* ReadInputFromConsole();
+        static void DisplayHelpText();
         void GenerateLine();
         void SetUp();
         void Run();
