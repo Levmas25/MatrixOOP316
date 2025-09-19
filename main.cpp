@@ -14,6 +14,10 @@ int main(int argc, char* argv[]){
         AppManager::DisplayHelpText();
         return 0;
     }
+    else if (argc == 2){
+        AppManager::DisplayInvaidArgumentCountMsg();
+        return 0;
+    }
 
     AppManager manager = (argc == 4)
     ? AppManager(std::string(argv[1]), std::string(argv[2]), std::string(argv[3]))
