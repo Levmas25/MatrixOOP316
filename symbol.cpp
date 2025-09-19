@@ -1,6 +1,7 @@
+#include <iostream>
+
 #include "symbol.h"
 #include "console_manager.h"
-#include <iostream>
 #include "random_engine.h"
 
 

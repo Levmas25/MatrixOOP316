@@ -94,7 +94,7 @@ void AppManager::SetUp(){
     std::cout << std::unitbuf;
     RandomEngine::Init();
     ConsoleManager::ClearScreen();
-    ConsoleManager::SetColor(WHITE);
+    ConsoleManager::SetConsoleColor(WHITE);
 }
 
 int* AppManager::ReadInputFromConsole(){

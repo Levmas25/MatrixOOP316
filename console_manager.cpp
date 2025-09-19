@@ -1,5 +1,6 @@
 #include "console_manager.h"
 #include "colors.h"
+
 #include<iostream>
 #include<sys/ioctl.h>
 #include<unistd.h>
@@ -13,7 +14,7 @@ void ConsoleManager::GotoXY(int col, int row){
     std::cout << "\033[" << row  << ';' << col << 'H';
 }
 
-void ConsoleManager::SetColor(int foreground=WHITE){
+void ConsoleManager::SetConsoleColor(int foreground=WHITE){
     std::cout << "\033[0;" << foreground << 'm';
 }
 

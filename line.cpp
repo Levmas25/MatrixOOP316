@@ -40,8 +40,8 @@ void Line::_ShiftLeft(bool cameOut, int numberOfShifts){
             _tailPosition[0] = _row;
         }
         
+        usleep(1000000 / _speed);
     }
-    usleep(1000000 / _speed);
 }
 
 void Line::_DeleteFromTail(int times){
