@@ -11,7 +11,7 @@ class RandomEngine{
             gen.seed(rd());
         }
 
-        static int randInt(int a, int b){
+        static int RandInt(int a, int b){
             // maps genrated int to the [a, b] range
             std::uniform_int_distribution<> dist(a, b);
             // uses generated seed rd with Mersenne Twister algorithm to generate preudo random number

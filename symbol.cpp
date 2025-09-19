@@ -33,7 +33,7 @@ MySymbol::MySymbol(int x, int y, int color){
     _y = y;
     _color = color;
 
-    int pos = RandomEngine::randInt(0, MySymbol::charset.size() - 1);
+    int pos = RandomEngine::RandInt(0, MySymbol::charset.size() - 1);
     _c = MySymbol::charset[pos];
 
     PutSymbol();

@@ -13,12 +13,13 @@ class AppManager{
         static const std::string _invalidLineSpeedErrorMsg;
         static const std::string _invalidLineLengthErrorMsg;
         static const std::string _invalidEpilepcyErrorMsg;
+        static const std::string _invalidArgumentCountMsg;
 
         static const std::string _lineSpeedInputMsg;
         static const std::string _lineLengthInputMsg;
         static const std::string _epilepcyModeInputMsg;
 
-        static const char* _helpMessage;
+        static const std::string _helpMsg;
 
     public:
         AppManager();
@@ -26,6 +27,7 @@ class AppManager{
         int* ValidateInput(std::string lineSpeed, std::string lineLength, std::string epilepsy);
         int* ReadInputFromConsole();
         static void DisplayHelpText();
+        static void DisplayInvaidArgumentCountMsg();
         void GenerateLine();
         void SetUp();
         void Run();
